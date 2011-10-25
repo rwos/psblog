@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>%%%title%%%%%%PAGETITLE%%%</title>
+    <link rel="stylesheet" href="%%%blog_url%%%style.css" type="text/css">
+    <script type="text/javascript">
+        var state = 0;
+        var expire = new Date();
+        expire.setTime(expire.getTime()+1000*60*60*24*365)
+        var cookie_foot = "; expires="+expire.toUTCString()+"; path=/";
+        function switch_style() {
+            tag = document.getElementsByTagName("link")[0];
+            if (state == 0) {
+                tag.href = tag.href.replace('style.css', 'alt_style.css');
+                state = 1;
+                document.cookie = "state=1"+cookie_foot;
+            } else if (state == 1) {
+                tag.href = tag.href.replace('alt_style.css', 'style.css');
+                state = 0;
+                document.cookie = "state=0"+cookie_foot;
+            }
+        }
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            if (cookies[i].trim() == "state=1")
+                switch_style();
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="%%%blog_url%%%">%%%title%%%</a></h1>
+        <code>%%%subtitle%%%<span class="blink_ftw">_</span></code><br>
+        <a href="%%%blog_url%%%">recent posts</a>
+        - <a href="%%%blog_url%%%rss">rss</a>
+        <script type="text/javascript">
+            document.write("- <a href='javascript:switch_style()'>switch style</a>");
+        </script>
+    </div>
+    <div id="page">
+            %%%CONTENT%%%
+        <div id="footer">
+            <small><a href="%%%blog_url%%%stats">compile statistics</a></small>
+        </div>
+    </div>
+</body>
+</html>
+

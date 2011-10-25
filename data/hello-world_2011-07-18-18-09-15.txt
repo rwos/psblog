@@ -1,0 +1,13 @@
+Hello World!
+
+This is just a *test* post, with some [markdown](http://www.example.com)
+stuff in it.
+
+> Markdown is pretty neat.
+
+Well, at least better than writing plain HTML.
+
+    This should be some code.
+
+And the last paragraph.
+

@@ -1,0 +1,121 @@
+a  {
+    color: #ff8000;
+    text-decoration: none;
+}
+a: visited {
+    color: #d46c04;
+    background: inherit;
+}
+a: hover {
+    text-decoration: underline;
+}
+a img {
+    border: 0px none;
+
+}
+blockquote {
+    font-style: italic;
+}
+body {
+    font-size: 11pt;
+    font-family: Helvetica,Arial,sans-serif;
+    line-height: 1.5em;
+    margin: 0em;
+    padding: 0em;
+    color: #00ff00;
+    background-color: #000000;
+}
+h1 {
+    font-weight: normal;
+    display: inline;
+    padding-right: 0.25em;
+}
+h2, h3 {
+    font-weight: normal;
+}
+hr {
+    border-style: none;
+    width: 80%;
+    height: 0pt;
+    border-top: 2px dashed #00ff00;
+}
+input {
+    font-family: monospace;
+    font-size: 9pt;
+    color: #00aa00;
+}
+input,textarea {
+    color: #00ff00;
+    background-color: #000000;
+    width: 100%;
+    border: 1pt solid #009900;
+    border-radius: 0.25em;
+    padding: 0.25em;
+    margin: 0.25em;
+}
+pre {
+    line-height: 1.25em;
+}
+pre,code {
+    font-size: 10pt;
+}
+#header {
+    margin: 0em;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    padding-bottom: 0em;
+    background-color: #002200;
+    box-shadow: 0em 0.5em 0.5em #002200;
+}
+#page {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 50em;
+}
+#footer {
+    color: #00aa00;
+    padding: 2em;
+    text-align: center;
+}
+.block {
+    margin: 0.5em;
+    padding: 1.5em;
+    padding-top: 0.5em;
+    border: 1pt solid #00aa00;
+    background-color: #000000;
+    border-radius: 0.25em;
+    box-shadow: 0em 0em 0.5em #009900;
+}
+.single {
+    padding-top: 1.5em;
+}
+form, #p, #f {
+    margin: 0.5em;
+    padding: 1.5em;
+    border: 1pt solid #00aa00;
+    background-color: #000000;
+    border-radius: 0.25em;
+}
+.blink_ftw {
+    text-decoration: blink;
+}
+@media screen and (max-width:  700px)  {
+    .hd {
+        display: none;
+    }
+    pre {
+        white-space: pre-wrap;
+    }
+}
+@media screen and (max-width:  500px)  {
+    .hd {
+        display: none;
+    }
+    pre {
+        white-space: pre-wrap;
+    }
+    #header code {
+        display: block;
+    }
+}
+
