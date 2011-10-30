@@ -47,13 +47,14 @@ Files and Directories:
 
 Deployment:
 
-    - create the out/ directory, and in it a named after the current
-      year (mkdir -p out/2011)
-    - configure your webserver to HTTP auth for admin.py.
+    - edit src/config.py and enter your settings
+    - create the out/ directory, and in it another directory named after
+      the current year (mkdir -p out/2011)
+    - configure your webserver to use HTTP auth for admin.py
     - make sure that admin.py and comment.py are executable for your
-      webserver.
-    - deny access to the data/ and the log/ directories and anything
-      in them
+      webserver
+    - stop your server from serving the data/ and the log/ directories and
+      anything in them
     - set up content-negotiation (the engine creates gzipped versions of
       html, xml, and css files)
     - the blog's root is the "out" directory
@@ -75,6 +76,10 @@ Bugs:
     The markdown translator is not very good.
 
     HTML form handling is implemented very, very badly.
+
+    The comment.js javascript file is included in all pages, but only needed
+    for those with a single post. Additionally, that file has a cgi url
+    hardcoded and doesn't use the config option.
 
     The blog needs year directories in the out directory. It should
     make those.

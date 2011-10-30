@@ -29,17 +29,20 @@ def compile_everything():
     """ Compile all the pages. """
     start = time.clock()
     posts = get_all_posts()
+    log_compile("creating single posts")
     for p in posts:
         create_single(p)
+        log_compile(".")
+    log_compile("done")
     create_multi(posts)
     create_rss(posts)
     create_stats(posts, start)
     create_errors()
     create_css()
+    create_js()
 
 def create_single(p):
     """ Create a single html file for a single post. """
-    log_compile("creating single post")
     post_str = html.block(
         "".join([
             html.date(p["meta"]["datetime"]),
@@ -60,7 +63,6 @@ def create_single(p):
     urlpath = str(p["meta"]["datetime"].year)+"/"+p["meta"]["url_heading"]
     write_out(urlpath+".html",
                   html.render_front(file_contents, p["meta"]["heading"]))
-    log_compile("done")
 
 def create_multi(posts):
     """ Create the overview index.html file. """
@@ -137,12 +139,20 @@ def create_errors():
 
 def create_css():
     """ Minify the css and write it to the output dir. """
-    log_compile("creating error pages")
+    log_compile("processing css files")
     css = readfile("style.css")
     write_out("style.css", html.minify_css(css))
     # alternative css
     css = readfile("alt_style.css")
     write_out("alt_style.css", html.minify_css(css))
+    log_compile("done")
+
+def create_js():
+    """ Minify the js and write it to the output dir. """
+    # TODO: minifying
+    log_compile("processing javascript files")
+    js = readfile("comment.js")
+    write_out("comment.js", js)
     log_compile("done")
 
 def get_post(post_id):
@@ -272,6 +282,7 @@ def urlify(s):
     """ Return a string that is usable in an URL and a filename. """
     # TODO: Does this regexp include non-ascii chars in some locales?
     s = re.sub("[^a-zA-Z0-9]", "-", s)
+    s = re.sub("--+", "-", s)
     s = s.strip("-")
     s = s.lower()
     return s
@@ -304,8 +315,13 @@ def log_compile(msg):
         time_str = dt.datetime.now().strftime(config.log_date_format)
         writefile(config.log_dir+"compile.log",
                   "compiling started at "+time_str+"\n")
-    appendfile(config.log_dir+"compile.log",
-        "[%7.4f"%(time.clock()-compile_log_started)+"] "+msg+"\n")
+    if msg == "done":
+        msg += "\n"
+    elif msg == ".":
+        msg += " "
+    else:
+        msg = "[%7.4f"%(time.clock()-compile_log_started)+"] "+msg+" "
+    appendfile(config.log_dir+"compile.log", msg)
 
 def write_out(filename, html):
     """ Write a file, including a gzipped version, to the out_dir """

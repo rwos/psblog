@@ -58,9 +58,12 @@ def comment_form(page_id, page_url):
         in_("text", "name"), "</td></tr>",
         "<tr><td>website (optional)</td><td>",
         in_("text", "url"), "</td></tr>",
-        "<tr><td colspan='2'><textarea name='text'></textarea></td></tr>",
+        "<tr><td colspan='2'>",
+        "<textarea name='text' id='comment_text' ",
+        "onchange='preview_comment()' onkeyup='preview_comment()'>",
+        "</textarea></td></tr>",
         "<tr><td><input type='submit' value='submit'></td></tr></table>",
-        "</form>"])
+        "<div id='comment_preview'></div></form>"])
 
 def hex_dump(s):
     """ Return a hex dump (like hd(1)) of the given data. """

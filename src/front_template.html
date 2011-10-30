@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>%%%title%%%%%%PAGETITLE%%%</title>
     <link rel="stylesheet" href="%%%blog_url%%%style.css" type="text/css">
+    <script type="text/javascript" src="%%%blog_url%%%comment.js"></script>
     <script type="text/javascript">
         var state = 0;
         var expire = new Date();
@@ -35,13 +36,14 @@
         <a href="%%%blog_url%%%">recent posts</a>
         - <a href="%%%blog_url%%%rss">rss</a>
         <script type="text/javascript">
-            document.write("- <a href='javascript:switch_style()'>switch style</a>");
+            document.write("- <a href='javascript:switch_style()'><em>switch style</em></a>");
         </script>
     </div>
     <div id="page">
             %%%CONTENT%%%
         <div id="footer">
-            <small><a href="%%%blog_url%%%stats">compile statistics</a></small>
+            <p>powered by <a href="https://github.com/rwos/psblog">psblog</a></p>
+            <p><a href="%%%blog_url%%%stats">compile statistics</a></p>
         </div>
     </div>
 </body>
