@@ -2,9 +2,9 @@ var last_time = 0;
 var staged = 0;
 function preview_comment() {
     now = +new Date();
-    if (last_time != 0 && now - last_time < 1000 * 2) {
+    if (last_time != 0 && now - last_time < 500) {
         if (staged == 0) {
-            staged = setTimeout("preview_comment()", 2000);
+            staged = setTimeout("preview_comment()", 500);
         }
         return;
     }
