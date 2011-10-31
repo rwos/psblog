@@ -116,7 +116,7 @@ def create_stats(p, start):
             html.pre("".join([
                 "last compile on ",
                 dt.datetime.now().strftime("%A, %x %T"),
-                "\n\nnumber of pages: ",
+                "\n\nnumber of posts: ",
                 str(len(p)),
                 "\nrendering took ",
                 str(time.clock()-start),

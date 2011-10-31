@@ -68,6 +68,9 @@ Bugs:
 
     No threaded comments.
 
+    The comment-preview does not preserve linebreaks and thus
+    displays wrong results (switch to POST to handle this?).
+
     It's not possible to add posts containing UTF-8 characters.
 
     On a related note: the whole unicode encode/decode issue is seriously
