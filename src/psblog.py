@@ -34,7 +34,7 @@ def compile_everything():
         create_single(p)
         log_compile(".")
     log_compile("done")
-    create_multi(posts)
+    create_index(posts)
     create_rss(posts)
     create_stats(posts, start)
     create_errors()
@@ -64,7 +64,7 @@ def create_single(p):
     write_out(urlpath+".html",
                   html.render_front(file_contents, p["meta"]["heading"]))
 
-def create_multi(posts):
+def create_index(posts):
     """ Create the overview index.html file. """
     log_compile("creating index page")
     o = ""

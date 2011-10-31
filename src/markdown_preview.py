@@ -14,8 +14,6 @@
     implied warranty.
 """
 import cgi
-import cgitb
-cgitb.enable()
 
 import markdown
 

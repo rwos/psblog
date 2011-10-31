@@ -47,6 +47,7 @@ log_dir = "../log/"
 
 # maximum size of the psblog.log file in multiples of 1024 bytes
 # When this size is reached, the log file is emailed to author_email.
+# TODO: emailing isn't implemented yet
 max_log_size = 32
 
 # strftime(3) date format for the psblog.log file
