@@ -13,12 +13,17 @@
     documentation. This software is provided "as is" without express or
     implied warranty.
 """
-import cgi   
+import cgi
+import cgitb
+cgitb.enable()
 
 import markdown
 
 print("Content-Type: text/html\n\n")
 fields = cgi.FieldStorage()
 if "text" in fields and len(fields["text"].value) > 1:
-    print(markdown.markdown(cgi.escape(fields["text"].value)))
+    raw = fields["text"].value
+    escaped = cgi.escape(raw)
+    html = markdown.markdown(escaped)
+    print(html.encode("utf-8"))
 
