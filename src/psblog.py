@@ -36,6 +36,7 @@ def compile_everything():
     log_compile("done")
     create_index(posts)
     create_rss(posts)
+    create_sitemap(posts)
     create_stats(posts, start)
     create_errors()
     create_css()
@@ -106,6 +107,15 @@ def create_rss(posts):
             break
     o.append("</channel></rss>")
     write_out("rss.xml", "".join(o))
+    log_compile("done")
+
+def create_sitemap(posts):
+    """ Create a sitemap (plain text format). """
+    log_compile("creating sitemap")
+    o = []
+    for p in posts:
+        o.append(post_url(p["meta"]))
+    write_out("sitemap", "\n".join(o))
     log_compile("done")
 
 def create_stats(p, start):
