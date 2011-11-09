@@ -4,30 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>%%%title%%%%%%PAGETITLE%%%</title>
     <link rel="stylesheet" href="%%%blog_url%%%style.css" type="text/css">
-    <script type="text/javascript" src="%%%blog_url%%%comment.js"></script>
-    <script type="text/javascript">
-        var state = 0;
-        var expire = new Date();
-        expire.setTime(expire.getTime()+1000*60*60*24*365)
-        var cookie_foot = "; expires="+expire.toUTCString()+"; path=/";
-        function switch_style() {
-            tag = document.getElementsByTagName("link")[0];
-            if (state == 0) {
-                tag.href = tag.href.replace('style.css', 'alt_style.css');
-                state = 1;
-                document.cookie = "state=1"+cookie_foot;
-            } else if (state == 1) {
-                tag.href = tag.href.replace('alt_style.css', 'style.css');
-                state = 0;
-                document.cookie = "state=0"+cookie_foot;
-            }
-        }
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            if (cookies[i].trim() == "state=1")
-                switch_style();
-        }
-    </script>
+    <script type="text/javascript">var state=0,expire=new Date;expire.setTime(expire.getTime()+31536E6);var cookie_foot="; expires="+expire.toUTCString()+"; path=/";function switch_style(){tag=document.getElementsByTagName("link")[0];if(state==0)tag.href=tag.href.replace("style.css","alt_style.css"),state=1,document.cookie="state=1"+cookie_foot;else if(state==1)tag.href=tag.href.replace("alt_style.css","style.css"),state=0,document.cookie="state=0"+cookie_foot} for(var cookies=document.cookie.split(";"),i=0;i<cookies.length;i++)cookies[i].trim()=="state=1"&&switch_style();var last_time=0,staged=0; function preview_comment(){now=+new Date;last_time!=0&&now-last_time<2E3?staged==0&&(staged=setTimeout("preview_comment()",2E3)):(clearTimeout(staged),staged=0,text=document.getElementById("comment_text").value,xhr=new XMLHttpRequest,xhr.onreadystatechange=function(){if(xhr.readyState==4)document.getElementById("comment_preview").innerHTML=xhr.responseText},xhr.open("GET","http://blog.r-wos.org/markdown_preview.py?text="+text,true),xhr.send(null),last_time=now)};</script>
 </head>
 <body>
     <div id="header">
@@ -35,9 +12,8 @@
         <code>%%%subtitle%%%<span class="blink_ftw">_</span></code><br>
         <a href="%%%blog_url%%%">recent posts</a>
         - <a href="%%%blog_url%%%rss">rss</a>
-        <script type="text/javascript">
-            document.write("- <a href='javascript:switch_style()'><em>switch style</em></a>");
-        </script>
+        - <a href="%%%blog_url%%%2011/about">about</a>
+        <script type="text/javascript">document.write("- <a href='javascript:switch_style()'><em>switch style</em></a>");</script>
     </div>
     <div id="page">
             %%%CONTENT%%%

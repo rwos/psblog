@@ -39,7 +39,7 @@ def compile_everything():
     create_stats(posts, start)
     create_errors()
     create_css()
-    create_js()
+    #create_js()
 
 def create_single(p):
     """ Create a single html file for a single post. """
@@ -149,11 +149,14 @@ def create_css():
 
 def create_js():
     """ Minify the js and write it to the output dir. """
+    pass
     # TODO: minifying
-    log_compile("processing javascript files")
-    js = readfile("comment.js")
-    write_out("comment.js", js)
-    log_compile("done")
+    # + injecting the minified js directly into the header of
+    # the template
+    #log_compile("processing javascript files")
+    #js = readfile("comment.js")
+    #write_out("comment.js", js)
+    #log_compile("done")
 
 def get_post(post_id):
     """
