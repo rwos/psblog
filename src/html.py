@@ -29,9 +29,11 @@ def author():
 
 def post_link(post):
     """ Return a link to the given post. """
-    # TODO: make absolute
-    urlpath = str(post["meta"]["datetime"].year)+"/"+post["meta"]["url_heading"]
-    return a(urlpath, escape(post["meta"]["heading"]))
+    return a(
+        config.blog_url+
+            str(post["meta"]["datetime"].year)+
+            "/"+post["meta"]["url_heading"],
+        escape(post["meta"]["heading"]))
 
 def block(html, class_=""):
     """ Return a block. """

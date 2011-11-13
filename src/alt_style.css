@@ -80,12 +80,16 @@ pre,code {
 .single {
     padding-top: 1.5em;
 }
+.btw {
+    padding-bottom: 0.5em;
+    border-style: none;
+    background-color: inherit;
+    box-shadow: none;
+    font-size: small;
+}
 form, #p, #f {
     margin: 0.5em;
     padding: 1.5em;
-    border: 1px solid #d0d0df;
-    background-color: #ffffff;
-    border-radius: 0.25em;
 }
 .blink_ftw {
     text-decoration: blink;

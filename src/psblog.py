@@ -30,8 +30,8 @@ def compile_everything():
     start = time.clock()
     posts = get_all_posts()
     log_compile("creating single posts")
-    for p in posts:
-        create_single(p)
+    for i in xrange(len(posts)):
+        create_single(posts, i)
         log_compile(".")
     log_compile("done")
     create_index(posts)
@@ -42,8 +42,10 @@ def compile_everything():
     create_css()
     #create_js()
 
-def create_single(p):
+def create_single(posts, index):
     """ Create a single html file for a single post. """
+    # actual post
+    p = posts[index]
     post_str = html.block(
         "".join([
             html.date(p["meta"]["datetime"]),
@@ -51,6 +53,14 @@ def create_single(p):
             html.p(p["html"]),
             html.author()]),
         "single")
+    # links to previous and next posts
+    prev_ls = []
+    if index > 0:
+        prev_ls.append("next: " + html.post_link(posts[index-1]))
+    if index < len(posts) - 1:
+        prev_ls.append("previous: " + html.post_link(posts[index+1]))
+    prev_str = html.block("<br>".join(prev_ls), "btw")
+    # comments and comment form
     comments_str = ""
     for c in p["comments"]:
         comments_str += html.block(
@@ -60,7 +70,7 @@ def create_single(p):
     comment_form_str = html.comment_form(
         post_id(p["meta"]), post_url(p["meta"]))
     # write to file
-    file_contents = post_str+comments_str+comment_form_str
+    file_contents = post_str+prev_str+comments_str+comment_form_str
     urlpath = str(p["meta"]["datetime"].year)+"/"+p["meta"]["url_heading"]
     write_out(urlpath+".html",
                   html.render_front(file_contents, p["meta"]["heading"]))
