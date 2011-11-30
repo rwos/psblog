@@ -48,10 +48,16 @@ else:
         else:
             url = ""
         text = cgi.escape(my_form["text"].value)
-        post_id = cgi.escape(my_form["post_id"].value)
-        add_comment(name, mail, url, text, post_id)
-        psblog.compile_everything()
-        print("Location: "+my_form["post_url"].value+"\n\n")
+        if "href" in text:
+            psblog.log_err("rejecting comment: "
+               +str([name, mail, url, text]))
+            print("Content-Type: text/html\n\n")
+            print("no html hyperlinks, please use markdown syntax")
+        else:
+            post_id = cgi.escape(my_form["post_id"].value)
+            add_comment(name, mail, url, text, post_id)
+            psblog.compile_everything()
+            print("Location: "+my_form["post_url"].value+"\n\n")
     except KeyError:
         print("Content-Type: text/html\n\n")
         print("Sorry, but that didn't work...")

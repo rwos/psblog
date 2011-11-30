@@ -80,9 +80,8 @@ Bugs:
 
     HTML form handling is implemented very, very badly.
 
-    The comment.js javascript file is included in all pages, but only needed
-    for those with a single post. Additionally, that file has a cgi url
-    hardcoded and doesn't use the config option.
+    There is no real solution in place to handle javascript
+    (incl. minifying etc).
 
     The blog needs year directories in the out directory. It should
     make those.

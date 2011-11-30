@@ -196,14 +196,12 @@ def get_post(post_id):
 
 def get_all_posts():
     """ Return a list of all posts (see get_post for details). """
-    log("getting all posts")
     posts = []
     for filename in glob.glob(config.data_dir+"*.txt"):
         post_id = filename.rstrip('.txt')
         p = get_post(post_id)
         posts.append(p)
     posts = sorted(posts, key=lambda x: x["meta"]["datetime"], reverse=True)
-    log("done")
     return posts
 
 def get_text(post_id):
